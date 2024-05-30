@@ -41,8 +41,6 @@ export class SwaggerWrapper {
 
   public static async init(): Promise<void> {
     Styler.initSwaggerWrapper();
-    loadStylesheet(SwaggerWrapper.cfg.cssUrl);
-    await loadScript(SwaggerWrapper.cfg.bundleUrl);
     $("body").append(
       `<div id="${SwaggerWrapper.cfg.id}" class="${SwaggerWrapper.cfg.hideClass}"></div>`,
     );
