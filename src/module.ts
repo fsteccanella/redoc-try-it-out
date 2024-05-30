@@ -1,4 +1,3 @@
-import { loadScript } from "./utils/loaders/scripts";
 import { Styler } from "./styler";
 import { RedocTryItOutOptions } from "./interfaces/redoc-try-it-out-options.interface";
 import { SwaggerWrapper } from "./wrappers/swagger.wrapper";
@@ -12,13 +11,7 @@ import { TryBtnConfigConfig } from "./config/try-btn-config";
 import { StyleMatcherConfig } from "./config/style-matcher.config";
 
 export class RedocTryItOut {
-  private static async loadDependencies(): Promise<void> {
-    await loadScript(RedocWrapper.cfg.tryItDependencies.jqueryUrl);
-    return loadScript(RedocWrapper.cfg.tryItDependencies.jqueryScrollToUrl);
-  }
-
   private static async loadAll(): Promise<void[]> {
-    await RedocTryItOut.loadDependencies();
     return Promise.all([RedocWrapper.init(), SwaggerWrapper.init()]);
   }
 
